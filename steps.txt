@@ -11,3 +11,25 @@
 6. Add link for style
 
 7. npm install react-router-dom --save
+
+8. Create src folder inside js folder and add App.js on it
+
+9. Change app.js to require app.js
+
+10. Add components folder inside src folder, delete Example.js and add Home.js, Add.js and Edit.js
+
+11. Import react-router-dom in App.js
+
+12. Import ReactDOM in order to render App component
+
+13. Import components and add them to App as Routes using Switch
+
+14. Render the App in #root element
+
+15. Add contenx to components
+
+16. To write scss will use the app.scss file
+
+17. Connect the routes in App with the components
+
+18. Create AppContainer
