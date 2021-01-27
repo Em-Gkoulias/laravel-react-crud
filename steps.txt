@@ -33,3 +33,13 @@
 17. Connect the routes in App with the components
 
 18. Create AppContainer
+
+19. Complete the UI and php artisan make:migration create_posts_table
+
+20. php artisan make:model Post
+
+21. Add fields with migration
+
+22. Prepare database at .env file
+
+23. php artisan migrate
