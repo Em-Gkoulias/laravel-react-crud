@@ -43,3 +43,13 @@
 22. Prepare database at .env file
 
 23. php artisan migrate
+
+24. Add fillable at model
+
+25. Change path at web.php to go to welcome page
+
+26. php artisan make:controller PostController --resource
+
+27. Change route on api.php
+
+28. php artisan make:resource Post
