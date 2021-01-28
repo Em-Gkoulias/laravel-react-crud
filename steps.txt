@@ -53,3 +53,9 @@
 27. Change route on api.php
 
 28. php artisan make:resource Post
+
+29. Change the resource context
+
+29. Add PostResource to PostController as well as Post model
+
+30. Write the function on PostController

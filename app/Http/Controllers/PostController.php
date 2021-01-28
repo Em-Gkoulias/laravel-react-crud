@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\Post as PostResource;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -13,17 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return PostResource::collection(Post::all());
     }
 
     /**
@@ -34,29 +26,25 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required'],
+            'description' => ['required']
+        ]);
+
+        $post = new Post([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        $post->save();
+
+        return response()->json([
+            'data' => 'Post created!'
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        return new PostResource(Post::findOrFail($id));
     }
 
     /**
@@ -68,7 +56,19 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => ['required'],
+            'description' => ['required']
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->save();
+
+        return response()->json([
+            'data' => 'Post updated!'
+        ]);
     }
 
     /**
@@ -79,6 +79,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post::delete();
+
+        return response()->json([
+            'data' => 'Post deleted!'
+        ]);
     }
 }
